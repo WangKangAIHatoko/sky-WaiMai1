@@ -87,15 +87,29 @@ public class EmployeeController {
         return Result.success();
     }
 
+//    /**
+//     * 员工分页查询
+//     * @param employeePageQueryDTO
+//     * @return
+//     */
+//    @GetMapping("/page")
+//    @ApiOperation("员工分页查询")
+//    public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO) {
+//        log.info("员工分页查询，参数为：{}", employeePageQueryDTO);
+//        PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO);
+//        return Result.success(pageResult);
+//    }
+
     /**
      * 员工分页查询
      * @param employeePageQueryDTO
      * @return
      */
-    @GetMapping("/page")
+
     @ApiOperation("员工分页查询")
-    public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO) {
-        log.info("员工分页查询，参数为：{}", employeePageQueryDTO);
+    @GetMapping("/page")
+    public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO){
+        log.info("员工分页查询，参数为：{}",employeePageQueryDTO);
         PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO);
         return Result.success(pageResult);
     }

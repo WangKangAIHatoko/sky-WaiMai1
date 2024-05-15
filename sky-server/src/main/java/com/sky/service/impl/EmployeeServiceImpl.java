@@ -97,23 +97,46 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeMapper.insert(employee);//后续步骤定义
     }
 
+
     /**
-     * 员工分页查询
+     * 分页查询
      * @param employeePageQueryDTO
      * @return
      */
     @Override
     public PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO) {
-//        开始分页查询
-        PageHelper.startPage(employeePageQueryDTO.getPage(), employeePageQueryDTO.getPageSize());
+        // select * from employee limit 0,10
+        // 开始分页查询
+        PageHelper.startPage(employeePageQueryDTO.getPage(),employeePageQueryDTO.getPageSize());
 
         Page<Employee> page = employeeMapper.pageQuery(employeePageQueryDTO);
 
         long total = page.getTotal();
         List<Employee> records = page.getResult();
 
-        return new PageResult(total, records);
+        return new PageResult(total,records);
     }
+
+//    /**
+//     * 员工分页查询
+//     * @param employeePageQueryDTO
+//     * @return
+//     */
+//    @Override
+//    public PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO) {
+////        开始分页查询
+//        PageHelper.startPage(employeePageQueryDTO.getPage(), employeePageQueryDTO.getPageSize());
+//
+//        Page<Employee> page = employeeMapper.pageQuery(employeePageQueryDTO);
+//
+//        long total = page.getTotal();
+//        List<Employee> records = page.getResult();
+//
+//        return new PageResult(total, records);
+//    }
+
+
+
 
     /**
      * 启用禁用员工账户
